@@ -1,4 +1,4 @@
-import { SELECCIONAR_TAREAS, AGREGAR_TAREA } from "../../types";
+import { SELECCIONAR_TAREAS, AGREGAR_TAREA, MOSTRAR_ERROR } from "../../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -13,6 +13,12 @@ export default (state, action) => {
       return {
         ...state,
         tareas: [...state.tareas, action.payload],
+        errortarea:false,
+      };
+      case MOSTRAR_ERROR:
+      return {
+        ...state,
+        errortarea: true,
       };
     default:
       return state;
