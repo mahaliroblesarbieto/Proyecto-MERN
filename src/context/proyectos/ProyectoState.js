@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import proyectoContext from './proyectoContext';
 import proyectoReducer from './proyectoReducer';
-import {FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGREGAR_PROYECTOS, VALIDAR_FORMULARIO, SELECCIONAR_PROYECTO} from '../../types'
+import {FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGREGAR_PROYECTOS, VALIDAR_FORMULARIO, SELECCIONAR_PROYECTO, ELIMINAR_PROYECTO} from '../../types'
 
 const ProyectoState = props => {
 
@@ -37,6 +37,10 @@ const ProyectoState = props => {
         dispatch({type: SELECCIONAR_PROYECTO, payload})
     }
 
+    const eliminarProyecto = (payload) => {
+        dispatch({type: ELIMINAR_PROYECTO, payload})
+    }
+
     
 
     return(
@@ -51,6 +55,7 @@ const ProyectoState = props => {
             agregarProyectos,
             mostrarError,
             seleccionarProyecto,
+            eliminarProyecto,
         }}>
         {props.children}
         </proyectoContext.Provider>

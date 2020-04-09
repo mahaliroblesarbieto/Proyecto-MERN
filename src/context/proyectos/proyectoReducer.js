@@ -1,4 +1,4 @@
-import {FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGREGAR_PROYECTOS, VALIDAR_FORMULARIO, SELECCIONAR_PROYECTO} from '../../types'
+import {FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGREGAR_PROYECTOS, VALIDAR_FORMULARIO, SELECCIONAR_PROYECTO, ELIMINAR_PROYECTO} from '../../types'
 
 export default (state, action) => {
     switch(action.type){
@@ -30,6 +30,12 @@ export default (state, action) => {
                 ...state,
                 proyectoactual: state.proyectos.filter(proyecto => proyecto.id === action.payload)[0]
             }
+            case ELIMINAR_PROYECTO:
+                return{
+                    ...state,
+                    proyectos: state.proyectos.filter(proyecto => proyecto.id !== action.payload),
+                    proyectoactual:null
+                }
         default:
             return state
     }
