@@ -34,7 +34,7 @@ const NuevoProyecto = () => {
 
       // Validar el proyecto
       if(nombre === '') {
-          // mostrarError();
+          mostrarError();
           return;
       }
 
@@ -82,6 +82,7 @@ const NuevoProyecto = () => {
           />
         </form>
       ) : null}
+      { errorformulario ? <p className="mensaje error">El nombre del Proyecto es obligatorio</p>  : null }
     </>
   );
 };
