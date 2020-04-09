@@ -2,10 +2,10 @@ import React from 'react';
 import Tarea from './Tarea';
 
 const tareas= [
-    {nombre: 'Elegir Plataforma', estado:true},
-    {nombre: 'Elegir Colores', estado:false},
-    {nombre: 'Elegir Plataformas de pago', estado:false},
-    {nombre: 'Elegir Hosting', estado:true},
+    {id:1, nombre: 'Elegir Plataforma', estado:true},
+    {id:2, nombre: 'Elegir Colores', estado:false},
+    {id:3, nombre: 'Elegir Plataformas de pago', estado:false},
+    {id:4, nombre: 'Elegir Hosting', estado:true},
 ]
 
 const ListadoTareas = () => {
@@ -18,6 +18,7 @@ const ListadoTareas = () => {
             : 
             tareas.map(tarea => (
                     <Tarea 
+                    key= {tarea.id}
                         tarea={tarea}
                     />
             ))

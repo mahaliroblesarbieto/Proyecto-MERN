@@ -8,7 +8,7 @@ const NuevoProyecto = () => {
     formulario,
     errorformulario,
     mostrarFormulario,
-    agregarProyecto,
+    agregarProyectos,
     mostrarError,
   } = proyectosContext;
 
@@ -29,23 +29,23 @@ const NuevoProyecto = () => {
   };
 
   // // Cuando el usuario envia un proyecto
-  // const onSubmitProyecto = e => {
-  //     e.preventDefault();
+  const onSubmitProyecto = e => {
+      e.preventDefault();
 
-  //     // Validar el proyecto
-  //     if(nombre === '') {
-  //         mostrarError();
-  //         return;
-  //     }
+      // Validar el proyecto
+      if(nombre === '') {
+          // mostrarError();
+          return;
+      }
 
-  //     // agregar al state
-  //     agregarProyecto(proyecto)
+      // agregar al state
+      agregarProyectos(proyecto)
 
-  //     // Reiniciar el form
-  //     guardarProyecto({
-  //         nombre: ''
-  //     })
-  // }
+      // Reiniciar el form
+      guardarProyecto({
+          nombre: ''
+      })
+  }
 
   // // Mostrar el formulario
   const onClickFormulario = () => {
@@ -64,7 +64,7 @@ const NuevoProyecto = () => {
       {formulario ? (
         <form
           className="formulario-nuevo-proyecto"
-          // onSubmit={onSubmitProyecto}
+          onSubmit={onSubmitProyecto}
         >
           <input
             type="text"

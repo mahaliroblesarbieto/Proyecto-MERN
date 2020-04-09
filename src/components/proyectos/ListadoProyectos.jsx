@@ -11,14 +11,14 @@ const ListadoProyectos = () => {
   const { mensaje, proyectos, obtenerProyectos } = proyectosContext;
 
   const data = [
-    { nombre: "Tienda Virtual" },
-    { nombre: "Intranet" },
-    { nombre: "Diseño de Sitio Web" },
+    { id:1, nombre: "Tienda Virtual" },
+    { id:2, nombre: "Intranet" },
+    { id:3, nombre: "Diseño de Sitio Web" },
   ];
 
   useEffect(() => {
     obtenerProyectos(data)
-  })
+  }, [])
 
 
 
@@ -42,7 +42,7 @@ const ListadoProyectos = () => {
   return (
     <ul className="listado-proyectos">
       {proyectos.map((proyecto) => (
-        <Proyecto proyecto={proyecto} />
+        <Proyecto key = {proyecto.id} proyecto={proyecto} />
       ))}
     </ul>
   );
