@@ -1,26 +1,23 @@
 import React, { useContext, useEffect } from "react";
 import Proyecto from "./Proyecto";
-import proyectoContext from '../../context/proyectos/proyectoContext';
+import proyectoContext from "../../context/proyectos/proyectoContext";
 // import AlertaContext from '../../context/alertas/alertaContext';
-// import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const ListadoProyectos = () => {
-
   // Extrar proyectos de state inicial
   const proyectosContext = useContext(proyectoContext);
   const { mensaje, proyectos, obtenerProyectos } = proyectosContext;
 
   const data = [
-    { id:1, nombre: "Tienda Virtual" },
-    { id:2, nombre: "Intranet" },
-    { id:3, nombre: "Diseño de Sitio Web" },
+    { id: 1, nombre: "Tienda Virtual" },
+    { id: 2, nombre: "Intranet" },
+    { id: 3, nombre: "Diseño de Sitio Web" },
   ];
 
   useEffect(() => {
-    obtenerProyectos(data)
-  }, [])
-
-
+    obtenerProyectos(data);
+  }, []);
 
   // const alertaContext = useContext(AlertaContext);
   // const { alerta, mostrarAlerta } = alertaContext;
@@ -37,29 +34,24 @@ const ListadoProyectos = () => {
   // }, [mensaje]);
 
   // // revisar si proyectos tiene contenido
-  if(proyectos.length === 0 ) return <p>No hay proyectos, comienza creando uno</p>;
+  if (proyectos.length === 0)
+    return <p>No hay proyectos, comienza creando uno</p>;
 
   return (
     <ul className="listado-proyectos">
-      {proyectos.map((proyecto) => (
-        <Proyecto key = {proyecto.id} proyecto={proyecto} />
-      ))}
+      <TransitionGroup>
+        {proyectos.map((proyecto) => (
+          <CSSTransition key={proyecto._id} timeout={200} classNames="proyecto">
+            <Proyecto proyecto={proyecto} />
+          </CSSTransition>
+
+          // <Proyecto key = {proyecto.id} proyecto={proyecto} />
+        ))}
+      </TransitionGroup>
     </ul>
   );
 };
 
 export default ListadoProyectos;
 
-// <TransitionGroup>
-// {proyectos.map(proyecto => (
-//     <CSSTransition
-//         key={proyecto._id}
-//         timeout={200}
-//         classNames="proyecto"
-//     >
-//         <Proyecto
-//             proyecto={proyecto}
-//         />
-//     </CSSTransition>
-// ))}
-// </TransitionGroup>
+
